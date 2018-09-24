@@ -2,6 +2,9 @@
 # set timezone
 timedatectl set-timezone America/Los_Angeles
 
-#create test file in /tmp dir
-echo "this is a test file created from post installation script" > /tmp/test.txt
+# Change ssh port to 2022
+sed -i -E  "s/^#?Port 22/Port 2022/g" /etc/ssh/sshd_config
+
+# Add "UseDNS no"
+sed -i -E  "s/^#?UseDNS no/UseDNS no/g" /etc/ssh/sshd_config
 
